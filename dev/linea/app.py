@@ -1,4 +1,5 @@
 import funciones
+import argparse
 
 def main(m: float, b: float):
 
@@ -21,4 +22,10 @@ def main(m: float, b: float):
     print(coordenadas_flotantes)
 
 if __name__ == '__main__':
-    main()
+    parser = argparse.ArgumentParser()
+    parser.add_argument('-m',type=float, help='Pendiente de la linea', default=2.0)
+    parser.add_argument('-b',type=float, help='Ordenada en el origen', default=3.0)
+    args = parser.parse_args()
+    main(args.m,args.b)
+
+    # main(m=2.0,b=3.0)
