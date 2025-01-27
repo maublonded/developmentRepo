@@ -2,8 +2,7 @@ import funciones
 
 def main(m: float, b: float):
 
-    '''
-    Funcion principal que calcula las coordenadas de una linea recta
+    ''' Funcion principal que calcula las coordenadas de una linea recta
     Recibimos: m y b
     Regresa: nada '''
 
