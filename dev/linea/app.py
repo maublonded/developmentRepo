@@ -1,5 +1,6 @@
-import funciones
 import argparse
+import matplotlib.pyplot as plt
+import funciones
 
 def main(m: float, b: float):
 
@@ -15,11 +16,12 @@ def main(m: float, b: float):
     # coordenadas_enteros = list(zip(X,Y))
     # print(coordenadas_enteros)
 
-    XF = [x/10.0 for x in range(10,110,5)]
-    YF = [funciones.Calcular_Y(x,m,b) for x in XF]
-    coordenadas_flotantes = list(zip(XF,YF))
+    X = [x/10.0 for x in range(10,110,5)]
+    Y = [funciones.Calcular_Y(x,m,b) for x in X]
+    coordenadas_flotantes = list(zip(X,Y))
     print('Flotantes')
     print(coordenadas_flotantes)
+    funciones.grafica_linea(X,Y,m,b)
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
