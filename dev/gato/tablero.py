@@ -86,4 +86,4 @@ def checa_winner(simbolos:dict, combinaciones: list):
             return simbolos[c[0]]
     return None
    
-import random    
+import random
