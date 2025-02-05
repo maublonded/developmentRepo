@@ -87,25 +87,3 @@ def checa_winner(simbolos:dict, combinaciones: list):
     return None
    
 import random    
-if __name__ == '__main__':
- 
-    numeros = [str(i) for i in range(1, 10)]
-    dsimbolos = {x:x for x in numeros}
-    g = juego(dsimbolos)
-    if g is not None:
-        print(f'El ganador es {g}')
-    else:
-        print(f'Empate')
-    '''dibuja_tablero(dsimbolos)
-    ia(dsimbolos)
-    #x = random.choice(numeros)
-    #numeros.remove(x)
-    #dsimbolos[x] = 'X'
-    dibuja_tablero(dsimbolos)
-    usuario(dsimbolos)
-    dibuja_tablero(dsimbolos)
-    #o = random.choice(numeros)
-    #numeros.remove(o)
-    #simbolos[o] = 'O'
-    #dibuja_tablero(dsimbolos)
-    #print(numeros)'''
