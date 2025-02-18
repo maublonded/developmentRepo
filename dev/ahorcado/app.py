@@ -6,6 +6,7 @@ import string
 import unicodedata
 from random import choice
 import funciones as fn
+import argparse
 
 def main(archivo_texto:str, nombre_plantilla='layout'):
     '''
@@ -31,5 +32,8 @@ def main(archivo_texto:str, nombre_plantilla='layout'):
 
 if __name__ == '__main__':
     #os.chdir('./curso_ds4/ahorcado')
-    archivo = './data/pg15532.txt'
+    parse = argparse.ArgumentParser(description='Juego del ahorcado')
+    parse.add_argument('archivo', help='Archivo de texto con palabras',default='./data/pg15532.txt')
+    args = parse.parse_args()
+    archivo = args.archivo
     main(archivo)
