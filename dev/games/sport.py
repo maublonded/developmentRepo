@@ -1,4 +1,4 @@
-class Sport:
+class sport:
     ''' Class for Sport games
     '''
 
@@ -24,15 +24,15 @@ class Sport:
         return {"name":self.name, "players":self.players, "league":self.league}
     
 if __name__ == "__main__":
-    s = Sport("Soccer", 11, "FIFA")
+    s = sport("Soccer", 11, "FIFA")
     print(s)
     print(repr(s))
     print(s.to_json())
-    nfl = Sport("Football", 11, "NFL")
-    lmp = Sport("Baseball", 9, "LMP")
-    mlb = Sport("Baseball", 9, "MLB")
-    lmx = Sport("Soccer", 11, "Liga MX")
-    nba = Sport("Basketball", 5, "NBA")
+    nfl = sport("Football", 11, "NFL")
+    lmp = sport("Baseball", 9, "LMP")
+    mlb = sport("Baseball", 9, "MLB")
+    lmx = sport("Soccer", 11, "Liga MX")
+    nba = sport("Basketball", 5, "NBA")
     lista_deportes = [nfl, lmp, mlb, lmx, nba]
     archivo_deportes = "deportes.txt"
     with open(archivo_deportes, "w") as file:

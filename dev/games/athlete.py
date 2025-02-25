@@ -1,4 +1,4 @@
-class Athlete:
+class athlete:
     """ Athlete class, with only name attribute. """
     def __init__(self, name:str):
         self.name = name
@@ -13,7 +13,7 @@ class Athlete:
         print(f"{self.name}")
 
 if __name__ == "__main__":
-    a = Athlete("Ana G.")
+    a = athlete("Ana G.")
     a.display()
     print(a)
     print(repr(a))

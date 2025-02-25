@@ -3,9 +3,12 @@
 # YOU MORE LIKE A LOVE TO START, I'M MORE OF THE TRIPS TO FLORIDA
 # ORDER THE HOR D'OEUVRES, VIEWS OF THE WATER, STRAIGHT FROM A PAGE OF YOUR FAVORITE AUTHOR
 
-from Team import Team
-from Sport import Sport
-from Athlete import Athlete
+
+
+from team import team
+from sport import sport
+from athlete import athlete
+from random import choice
 
 class Game:
     '''Clase game: Juego entre dos equipos'''
@@ -16,7 +19,7 @@ class Game:
         'LMX' :[x for x in range(0,9)],
     }
 
-    def __init__(self,A:Team,B:Team) -> None:
+    def __init__(self,A:team,B:team) -> None:
         self.A = A
         self.B = B
         self.score = dict()
@@ -25,16 +28,41 @@ class Game:
 
     def play(self):
         '''Juego simulado entre equipos'''
-        for s in self.sports_dict.values():
-            print(s)
+        league = self.A.sport.league
+        points = self.sports_dict[league]
+        a = choice(points)
+        b = choice(points)
+        self.score[self.A.name] = a
+        self.score[self.B.name] = b
+
+    def __str__(self) -> str:
+        ''' Metodo para mostrar case como string '''
+        return f"""
+        -----------------------
+        Game:
+        {self.A.name}: {self.score[self.A.name]}
+        {self.B.name}: {self.score[self.B.name]}
+        -----------------------"""
+    
+    def __repr__(self) -> str:
+        ''' Metodo para mostrar clase como string '''
+        return f"Game:(A={repr(self.A)} B={repr(self.B)})"
+
+    def to_json(self):
+        ''' Metodo para convertir clase a json '''
+        return{"A":self.A.to_json(),"B":self.B.to_json(),"score":self.score}
 
 if __name__ == "__main__":
     dt = ['Jordan','Jhonson','Pipen','Bird','Kobe']
     cz = ['Bjovik','Czack','Pfeizer','Leonard','Kempfe']
-    player_a = [Athlete(x) for x in dt]
-    player_b = [Athlete(x) for x in cz]
-    basketball= Sport("NBA",5,"DreamTeam")
-    t = Team("DreamTeam",basketball)
-    c = Team("CzackTeam",basketball)
+    player_a = [athlete(x) for x in dt]
+    player_b = [athlete(x) for x in cz]
+    basketball= sport("DreamTeam",5,"NBA")
+    t = team("DreamTeam",basketball)
+    c = team("CzackTeam",basketball)
     game = Game(t,c)
+    print(game)
+    print(repr(game) + "\n")
+    print(game.to_json())
     game.play()
+    print(game)
