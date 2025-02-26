@@ -6,10 +6,10 @@ from sport import sport
 
 class team:
     '''Clase para representar un equipo'''
-    def __init__(self, name:str, sport:sport):
+    def __init__(self, name:str, sport:sport, players:list):
         self.name = name
         self.sport = sport
-        self.players = []
+        self.players = players
     
     def add_player(self, player:athlete):
         '''Agregar un jugador al equipo'''

@@ -3,8 +3,6 @@
 # YOU MORE LIKE A LOVE TO START, I'M MORE OF THE TRIPS TO FLORIDA
 # ORDER THE HOR D'OEUVRES, VIEWS OF THE WATER, STRAIGHT FROM A PAGE OF YOUR FAVORITE AUTHOR
 
-
-
 from team import team
 from sport import sport
 from athlete import athlete
@@ -17,6 +15,7 @@ class Game:
         'NBA' :[x for x in range(70,121)],
         'NFL' :[x for x in range(3,56)],
         'LMX' :[x for x in range(0,9)],
+        'FIFA' :[x for x in range(0,9)],
     }
 
     def __init__(self,A:team,B:team) -> None:
