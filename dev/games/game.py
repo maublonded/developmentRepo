@@ -37,11 +37,10 @@ class Game:
     def __str__(self) -> str:
         ''' Metodo para mostrar case como string '''
         return f"""
-        -----------------------
+        --------------------------
         Game:
-        {self.A.name}: {self.score[self.A.name]}
-        {self.B.name}: {self.score[self.B.name]}
-        -----------------------"""
+        {self.A.name}: {self.score[self.A.name]} - {self.B.name}: {self.score[self.B.name]}
+        --------------------------"""
     
     def __repr__(self) -> str:
         ''' Metodo para mostrar clase como string '''
