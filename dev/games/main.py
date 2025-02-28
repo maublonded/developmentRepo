@@ -4,6 +4,7 @@ from sport import sport
 from game import Game
 from team import team
 import json
+import game_logic as gl
  
 def main(archivo_torneo:str):
     ''' Funcion principal de game '''
@@ -13,7 +14,7 @@ def main(archivo_torneo:str):
     else:
         players_mexico = ['Chicarito','Chucky','Ochoa','Tecatito','Guardado','Herrera','Layun','Moreno','Araujo','Oribe','Gimenez']
         players_espania = ['Casillas','Ramos','Pique','Iniesta','Silva','Isco','Busquets','Costa','Morata','Asensio','Pedri']
-        players_brasil = ['Neymar', 'Coutinho', ' Mercelo', 'Casemiro', 'Alisson', 'Jesus', ' Paulinho', 'Thiago', 'Silva', 'Fermino', 'Danilo']
+        players_brasil = ['Neymar', 'Coutinho', ' Marcelo', 'Casemiro', 'Alisson', 'Jesus', ' Paulinho', 'Thiago', 'Silva', 'Fermino', 'Danilo']
         players_argentina = ['Messi', 'Aguero', 'DiMaria', ' Mascherano', 'Higuain', 'Dybala', 'Otamendi', 'Romero', 'Riquelme', 'Dibu', 'Kempes']
         lista_mexico = [athlete(x) for x in players_mexico]
         lista_espania = [athlete(x) for x in players_espania]
@@ -49,7 +50,11 @@ def main(archivo_torneo:str):
         game = Game(A, B)
         game.play()
         print(game)
- 
+        juego['score'] = game.score
+    # Calcular el tablero del puntuacion
+    tablero = gl.scoring(torneo)
+    gl.display_tablero(tablero)
+
 if __name__ == "__main__":
     archivo_torneo = ""
     main(archivo_torneo)
