@@ -8,6 +8,7 @@ archivo_csv = 'booklist2000.csv'
 lista_libros = fn.leer_archivo_csv(archivo_csv)
 diccionario_titulos = fn.crea_diccionario_titulos(lista_libros, 'title')
 diccionario_autores = fn.crea_diccionario_autor(lista_libros, 'author')
+diccionario_id = fn.crea_diccionario_titulos(lista_libros, 'id')
 
 @app.route('/')
 def index():
@@ -24,5 +25,15 @@ def busqueda_titulo():
         print(titulo)
         print(resultado)
     return render_template('titulo.html', lista_libros=resultado)
+
+@app.route('/libro/<id_libro>', methods =['GET'])
+def libro(id_libro:str):
+    ''' Página de información de un libro '''
+    if id_libro in diccionario_id:
+        book = diccionario_id[id_libro]
+        return render_template('libro.html', libro=book)
+    else:
+        return render_template('libro.html', libro=None)
+
 if __name__ == '__main__':
     app.run(debug=True)
