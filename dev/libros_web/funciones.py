@@ -6,9 +6,9 @@ def leer_archivo_csv(archivo:str)->list:
     with open(archivo, 'r', encoding='utf8') as file:
         return [x for x in csv.DictReader(file)]
     
-def crea_diccionario_titulos(lista:list)->dict:
+def crea_diccionario_titulos(lista:list, llave: str)->dict:
     ''' Funcion que crea un diccionario con los titulos de los libros como clave y el resto de los datos como valores'''
-    return {x['title']:x for x in lista}
+    return {x[llave]:x for x in lista}
 
 def busca_en_titulo(diccionario, palabra)-> list:
     ''' Busca palabra en titulo de la lista de diccionarios '''
