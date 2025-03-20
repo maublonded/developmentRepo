@@ -92,6 +92,10 @@ class SistemaCine:
         self.peliculas = {}
         self.relaciones = {}
         self.usuarios = {}
+        self.idx_actor = 0
+        self.idx_pelicula = 0
+        self.idx_relacion = 0
+        self.usuario_actual = None
 
     def cargar_csv(self, archivo, clase):
         ''' Carga los datos de un archivo CSV en la base de datos'''
@@ -117,6 +121,23 @@ class SistemaCine:
         ids_peliculas = [rel.id_pelicula for rel in self.relaciones.values() if rel.id_estrella == id_estrella]
         return [self.peliculas[id_pelicula] for id_pelicula in ids_peliculas]
 
+    def obtener_actores_por_pelicula(self, id_pelicula):
+        ''' Devuelve una lista de actores que han participado en una película '''
+        ids_actores = [rel.id_estrella for rel in self.relaciones.values() if rel.id_pelicula == id_pelicula]
+        return [self.actores[id_estrella] for id_estrella in ids_actores]
+    
+    def login(self, username, password):
+        ''' Inica sesion en el sistema '''
+        if username in self.usuarios:
+            user = self.usuarios[username]
+            if user.hash_string(password) == user.hash_string(password):
+                self.usuario_actual = user
+                return True
+        return False   
+    
+    def marcaDeAwa():
+        print("CODIGO HECHO POR MAURICIO HUERTA TODOS LOS DERECHOS RESERVADOS")
+
 if __name__ == '__main__':
     #archivo = "datos/actores.csv"
     archivo_actores = "datos/actores.csv"
@@ -132,7 +153,21 @@ if __name__ == '__main__':
     for id_estrella, actor in actores.items():
         print(f"{id_estrella}: {actor.nombre:35s} - {actor.fecha_nacimiento}")
     lista_peliculas = sistema.obtener_peliculas_por_actor(1)
+    SistemaCine.marcaDeAwa()
     print("====== Películas en las que ha participado el actor: ======")
     for pelicula in lista_peliculas:
         print(pelicula)
     print(len(lista_peliculas))
+    lista_actores = sistema.obtener_actores_por_pelicula(1)
+    print("====== Actores que han participado en la película: ======")
+    for actor in lista_actores:
+        print(actor.nombre)
+    print("====== Usuario ======")
+    s = sistema.usuarios['miau']
+    print(s.username)
+    print(s.password)
+    print(s.hash_string(s.password))
+    exito = sistema.login('miau', '1234')
+    print(exito)
+    print(sistema.usuario_actual.username)
+
