@@ -185,8 +185,6 @@ class SistemaCine:
                 if pelicula:
                     personajes.append({"personaje": rel.personaje, "pelicula": pelicula})
         return personajes
-    
-    
 
 if __name__ == '__main__':
     #archivo = "datos/actores.csv"
